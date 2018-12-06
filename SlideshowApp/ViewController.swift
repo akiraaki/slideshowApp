@@ -16,7 +16,9 @@ class ViewController: UIViewController {
     }
     var count = 0
     var timer: Timer?
-    
+    let imageNameArray = [
+        "gazou1", "gazou2", "gazou3", "gazou4"
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -35,9 +37,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func displayImage() {
-        let imageNameArray = [
-                "gazou1", "gazou2", "gazou3", "gazou4"
-        ]
+//        let imageNameArray = [
+//                "gazou1", "gazou2", "gazou3", "gazou4"
+//        ]
         if count < 0 {
             count = 3
         }
@@ -80,7 +82,14 @@ class ViewController: UIViewController {
     // countを次のページに渡す、次ページ、viewcontrollerのarrayの配列
     // segueで渡す際にkakudaiViewcontroller.count
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if self.timer != nil {
+            self.timer?.invalidate()
+            self.timer = nil
+            saiseiteishiMoji.setTitle("再生", for: .normal)
+            susumuButton.isEnabled = true
+            modoruButton.isEnabled = true
+        }
         let kakudaiViewController:KakudaiViewController = segue.destination as! KakudaiViewController
-        kakudaiViewController.count = count
+        kakudaiViewController.imageName = imageNameArray[count]
     }
 }

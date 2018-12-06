@@ -10,16 +10,17 @@ import UIKit
 
 class KakudaiViewController: UIViewController {
 
-    var count = 0
+//    var count = 0
+    var imageName:String = ""
     
     @IBOutlet weak var imageView: UIImageView!
 
     override func viewWillAppear(_ animated: Bool) {
-        let imageNameArray = [
-            "gazou1", "gazou2", "gazou3", "gazou4"
-        ]
-        let name = imageNameArray[count]
-        let image = UIImage(named: name)
+//         let imageNameArray = [
+//            "gazou1", "gazou2", "gazou3", "gazou4"
+//        ]
+//        let name = imageNameArray[count]
+        let image = UIImage(named: imageName)
         imageView.image = image
     }
     
